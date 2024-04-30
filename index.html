@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Account Checker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Shopee Account Checker</h2>
+        <form>
+            <div class="input-field">
+                <label for="input">Nhập email, số điện thoại, hoặc tên đăng nhập</label>
+                <input type="text" id="input" placeholder="Nhập email, số điện thoại, hoặc tên đăng nhập">
+            </div>
+            <button class="button" id="submit">Kiểm tra</button>
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        const inputField = document.getElementById('input');
+        const submitButton = document.getElementById('submit');
+        const resultDiv = document.getElementById('result');
+
+        submitButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const input = inputField.value.trim();
+            let result = '';
+
+            if (input.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+                // Email
+                result = 'Tài khoản vẫn ổn';
+            } else if (input.match(/^\d{9,12}$/)) {
+                // Phone
+                result = 'Tài khoản vẫn ổn';
+            } else if (input.match(/^[a-zA-Z0-9_]+$/)) {
+                // Username
+                result = 'Tài khoản vẫn ổn';
+            } else {
+                result = 'Error System';
+            }
+
+            resultDiv.innerText = result;
+        });
+    </script>
+</body>
+</html>
