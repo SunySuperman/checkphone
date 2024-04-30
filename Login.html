@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Account Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+       .container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+       .input-field {
+            margin-bottom: 20px;
+        }
+       .input-field input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+       .button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       .button:hover {
+            background-color: #3e8e41;
+        }
+       .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Shopee Account Checker</h2>
+        <form>
+            <div class="input-field">
+                <input type="text" id="input" placeholder="Nhập email, số điện thoại, hoặc tên đăng nhập">
+            </div>
+            <button class="button" id="submit">Kiểm tra</button>
+            <div class="result" id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        const inputField = document.getElementById('input');
+        const submitButton = document.getElementById('submit');
+        const resultDiv = document.getElementById('result');
+
+        submitButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const input = inputField.value.trim();
+            let result = '';
+
+            if (input.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+                // Email
+                result = 'Tài khoản vẫn ổn';
+            } else if (input.match(/^\d{9,12}$/)) {
+                // Phone
+                result = 'Tài khoản vẫn ổn';
+            } else if (input.match(/^[a-zA-Z0-9_]+$/)) {
+                // Username
+                result = 'Tài khoản vẫn ổn';
+            } else {
+                result = 'Error System';
+            }
+
+            resultDiv.innerText = result;
+        });
+    </script>
+</body>
+</html>
